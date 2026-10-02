@@ -1,0 +1,22 @@
+http:
+  routers:
+    dashboard:
+      rule: "Host(`final.route.domain`)"
+      entryPoints:
+        - websecure
+      service: api@internal
+      middlewares:
+        - security-headers
+        - lan-only
+      tls:
+        certResolver: letsencrypt
+        domains:
+          - main: "wildcard.domain"
+            sans:
+              - "*.wildcard.domain"
+  middlewares:
+    lan-only:
+      ipAllowList:
+        sourceRange:
+          - X.X.X.X/XX
+          
