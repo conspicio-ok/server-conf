@@ -1,6 +1,6 @@
 http:
   routers:
-    dashboard:
+    traefik:
       rule: "Host(`final.route.domain`)"
       entryPoints:
         - websecure
