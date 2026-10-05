@@ -1,0 +1,13 @@
+version: 1
+metadata:
+  name: common - admin
+  labels:
+    blueprints.goauthentik.io/description: "regular group"
+
+entries:
+  - model: authentik_core.group
+    state: present
+    identifiers:
+      name: admins
+    attrs:
+      is_superuser: false

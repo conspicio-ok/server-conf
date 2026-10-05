@@ -1,0 +1,38 @@
+version: 1
+metadata:
+  name: common - user settings avatar
+  labels:
+    blueprints.goauthentik.io/description: "Avatar field in settings"
+
+entries:
+  - model: authentik_blueprints.metaapplyblueprint
+    attrs:
+      identifiers:
+        name: Default - User settings flow
+      required: true
+
+  - model: authentik_stages_prompt.prompt
+    id: avatar-prompt
+    state: present
+    identifiers:
+      name: user-settings-field-avatar
+    attrs:
+      field_key: attributes.avatar
+      label: Profil Picture
+      type: file
+      required: false
+      order: 250
+      sub_text: Square and light picture (max 200 Ko)
+
+  - model: authentik_stages_prompt.promptstage
+    state: present
+    identifiers:
+      name: default-user-settings
+    attrs:
+      fields:
+        - !Find [authentik_stages_prompt.prompt, [name, default-user-settings-field-username]]
+        - !Find [authentik_stages_prompt.prompt, [name, default-user-settings-field-name]]
+        - !Find [authentik_stages_prompt.prompt, [name, default-user-settings-field-email]]
+        - !Find [authentik_stages_prompt.prompt, [name, default-user-settings-field-locale]]
+        - !KeyOf avatar-prompt
+
