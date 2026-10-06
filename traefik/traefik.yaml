@@ -15,6 +15,9 @@ entryPoints:
     proxyProtocol:
       trustedIPs:
         - "10.99.0.0/24"
+    transport:
+      respondingTimeouts:
+        readTimeout: 600s
   traefik:
     address: "127.0.0.1:8080"
 
