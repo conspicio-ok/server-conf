@@ -1,0 +1,18 @@
+http:
+  routers:
+    music:
+      rule: "Host(`final.route.domain`)"
+      entryPoints:
+        - websecure
+      service: music
+      middlewares:
+        - security-headers
+      tls:
+        certResolver: letsencrypt
+
+  services:
+    music:
+      loadBalancer:
+        servers:
+          - url: "http://<ip-droppedneedle>:8688"
+
