@@ -1,0 +1,20 @@
+http:
+  routers:
+    slskd:
+      rule: "Host(`final.route.domain`)"
+      entryPoints:
+        - websecure
+      service: slskd
+      middlewares:
+        - security-headers
+        - authentik
+      tls:
+        certResolver: letsencrypt
+
+  services:
+    slskd:
+      loadBalancer:
+        servers:
+          - url: "http://<ip-slskd>:5030"
+
+          

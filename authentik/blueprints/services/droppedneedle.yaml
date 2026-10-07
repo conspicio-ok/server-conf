@@ -49,7 +49,7 @@ entries:
       slug: droppedneedle
     attrs:
       name: Music
-      meta_icon: https://raw.githubusercontent.com/droppedneedle/droppedneedle/master/resources/logo-192x192.png
+      meta_icon: https://raw.githubusercontent.com/DroppedNeedle/DroppedNeedle/refs/heads/main/Images/logo_icon.png
       provider: !KeyOf droppedneedle-provider
       meta_launch_url: https://music.final.domain.name
       policy_engine_mode: any
