@@ -1,0 +1,18 @@
+http:
+  routers:
+    blueprint:
+      rule: "Host(`final.route.domain`)"
+      entryPoints:
+        - websecure
+      service: blueprint
+      middlewares:
+        - security-headers
+      tls:
+        certResolver: letsencrypt
+
+  services:
+    blueprint:
+      loadBalancer:
+        servers:
+          - url: "http://<ip-blueprint>:3000"
+
